@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌻 Fernanda's OnlyFans</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Space+Mono:wght@400;700&display=swap');
+
+    :root {
+      --pink: #ff3fa4;
+      --gold: #ffd700;
+      --dark: #0d0008;
+      --card: #1a0015;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--dark);
+      color: #fff;
+      font-family: 'Space Mono', monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 20px 60px;
+      background-image: 
+        radial-gradient(ellipse at 20% 20%, rgba(255,63,164,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, rgba(255,215,0,0.1) 0%, transparent 60%);
+    }
+
+    /* ── HEADER ── */
+    .logo {
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--pink);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      opacity: 0.8;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(3rem, 10vw, 5.5rem);
+      background: linear-gradient(135deg, #fff 0%, var(--gold) 50%, var(--pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .tagline {
+      font-size: 0.7rem;
+      color: #ffffff60;
+      letter-spacing: 0.2em;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    /* ── LIVE BADGE ── */
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #ff0000;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      padding: 6px 16px;
+      border-radius: 4px;
+      margin-bottom: 24px;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ── STREAM EMBED ── */
+    .stream-container {
+      width: 100%;
+      max-width: 560px;
+      aspect-ratio: 16/9;
+      background: #0a0a0a;
+      border: 1px solid #ffffff15;
+      margin-bottom: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stream-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .stream-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff30;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      gap: 8px;
+    }
+
+    .stream-placeholder .cam-icon {
+      font-size: 2rem;
+      opacity: 0.3;
+    }
+
+    /* ── TIP COUNTER ── */
+    .tip-counter {
+      font-size: 0.7rem;
+      color: #ffffff40;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .tip-counter span {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* ── TIP BUTTONS ── */
+    .tip-section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: #ffffff40;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .tip-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 40px;
+    }
+
+    .tip-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      transition: transform 0.1s, filter 0.1s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tip-btn:active {
+      transform: scale(0.97);
+    }
+
+    .tip-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: white;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    .tip-btn.flash::after {
+      opacity: 0.2;
+    }
+
+    .tip-btn-1 {
+      background: #1a1a2e;
+      border: 1px solid #ffffff20;
+      color: #ffffffcc;
+    }
+
+    .tip-btn-2 {
+      background: linear-gradient(135deg, #1a0a2e, #2e0a1a);
+      border: 1px solid var(--pink);
+      color: white;
+    }
+
+    .tip-btn-3 {
+      background: linear-gradient(135deg, var(--pink), #ff8c00);
+      color: white;
+      font-size: 1.1rem;
+      box-shadow: 0 0 30px rgba(255,63,164,0.4);
+    }
+
+    .btn-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+
+    .btn-amount {
+      font-size: 1.4rem;
+    }
+
+    .btn-desc {
+      font-size: 0.6rem;
+      opacity: 0.6;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+    }
+
+    .btn-emoji {
+      font-size: 1.6rem;
+    }
+
+    /* ── TOAST NOTIFICATION ── */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--pink);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 999;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      font-size: 0.6rem;
+      color: #ffffff15;
+      letter-spacing: 0.15em;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    /* ── STATS ROW ── */
+    .stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.55rem;
+      color: #ffffff30;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <p class="logo">✦ ITP/IMA Stupid Hackathon 2026 ✦</p>
+  <h1>Fernanda</h1>
+  <p class="tagline">NYU's Most Talented Plant · She Dances For Tips</p>
+
+  <div class="live-badge">
+    <div class="live-dot"></div>
+    LIVE NOW
+  </div>
+
+  <!-- STREAM EMBED — replace src with your Daily.co or stream URL -->
+  <div class="stream-container">
+    <!-- 
+      OPTION A: Daily.co embed (recommended, low latency)
+      <iframe src="https://your-room.daily.co/fernanda" allow="camera; microphone"></iframe>
+      
+      OPTION B: YouTube embed
+      <iframe src="https://www.youtube.com/embed/LIVE_STREAM_ID?autoplay=1" allowfullscreen></iframe>
+
+      OPTION C: Just leave the placeholder if stream isn't working
+    -->
+    <div class="stream-placeholder">
+      <span class="cam-icon">📷</span>
+      <span>FERNANDA CAM — LIVE</span>
+    </div>
+  </div>
+
+  <p class="tip-counter">
+    <span id="tipCount">0</span> tips sent tonight 🔥
+  </p>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-num" id="wiggleCount">0</span>
+      <span class="stat-label">Wiggles</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" id="twerkCount">0</span>
+      <span class="stat-label">Twerks</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" id="fullSendCount">0</span>
+      <span class="stat-label">Full Sends</span>
+    </div>
+  </div>
+
+  <p class="tip-section-label">— choose your tip —</p>
+
+  <div class="tip-buttons">
+
+    <button class="tip-btn tip-btn-1" onclick="tip(1)">
+      <div class="btn-left">
+        <span class="btn-amount">💸 $1</span>
+        <span class="btn-desc">polite wiggle · she's flattered</span>
+      </div>
+      <span class="btn-emoji">🌱</span>
+    </button>
+
+    <button class="tip-btn tip-btn-2" onclick="tip(2)">
+      <div class="btn-left">
+        <span class="btn-amount">💸 $5</span>
+        <span class="btn-desc">proper twerk · committed</span>
+      </div>
+      <span class="btn-emoji">🌻</span>
+    </button>
+
+    <button class="tip-btn tip-btn-3" onclick="tip(3)">
+      <div class="btn-left">
+        <span class="btn-amount">💸 $10</span>
+        <span class="btn-desc">FULL SEND · unhinged · no regrets</span>
+      </div>
+      <span class="btn-emoji">🔥</span>
+    </button>
+
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">💸 Tip sent! She feels it!</div>
+
+  <p class="footer">NO REAL MONEY IS EXCHANGED · FERNANDA IS A PLANT · ITP 2026</p>
+
+  <script>
+    // ── CONFIG ──────────────────────────────────────────
+    const NTFY_TOPIC = "fernanda-twerks-2026"; // ← CHANGE THIS to your unique topic
+    const NTFY_URL   = `https://ntfy.sh/${NTFY_TOPIC}`;
+
+    // ── STATE (in-memory, resets on refresh) ────────────
+    let counts = { total: 0, wiggle: 0, twerk: 0, fullSend: 0 };
+
+    // ── TIP FUNCTION ────────────────────────────────────
+    async function tip(level) {
+      const messages = { 1: "tip1", 2: "tip2", 3: "tip3" };
+      const toasts   = { 
+        1: "💸 $1 sent! She wiggles for you!", 
+        2: "💸 $5 sent! She's twerking!", 
+        3: "🔥 $10 FULL SEND! SHE'S UNHINGED!" 
+      };
+
+      // Flash button
+      const btns = document.querySelectorAll('.tip-btn');
+      btns[level - 1].classList.add('flash');
+      setTimeout(() => btns[level - 1].classList.remove('flash'), 200);
+
+      // Update counts
+      counts.total++;
+      if (level === 1) counts.wiggle++;
+      if (level === 2) counts.twerk++;
+      if (level === 3) counts.fullSend++;
+      updateUI();
+
+      // Show toast
+      showToast(toasts[level]);
+
+      // Send to ntfy
+      try {
+        await fetch(NTFY_URL, {
+          method: "POST",
+          body: messages[level],
+          headers: { "Tags": messages[level] }
+        });
+      } catch (err) {
+        console.error("ntfy error:", err);
+        // Fail silently — demo still looks good
+      }
+    }
+
+    // ── UPDATE DISPLAY ───────────────────────────────────
+    function updateUI() {
+      document.getElementById('tipCount').textContent    = counts.total;
+      document.getElementById('wiggleCount').textContent = counts.wiggle;
+      document.getElementById('twerkCount').textContent  = counts.twerk;
+      document.getElementById('fullSendCount').textContent = counts.fullSend;
+    }
+
+    // ── TOAST ─────────────────────────────────────────────
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+  </script>
+
+</body>
+</html>
